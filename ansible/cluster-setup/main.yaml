@@ -1,0 +1,11 @@
+---
+- name: Setup k3s cluster
+  hosts: all
+  become: true
+
+- name: Cluster Setup
+  hosts: all
+  ansible.builtin.import_playbook: k3s.orchestration.site
+
+# - name: Configure kube-vip and kube-vip-cloud-controller
+#   import_playbook: playbooks/kube-vip-setup.yaml

@@ -1,0 +1,5 @@
+ingress-nginx:
+  controller:
+    ingressClassResource:
+      default: true
+  namespace: ingress-nginx

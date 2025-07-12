@@ -1,0 +1,33 @@
+external-dns:
+  provider:
+    name: webhook
+    webhook:
+      image:
+        repository: ghcr.io/tarantini-io/external-dns-pihole-webhook
+        tag: main
+      env:
+        - name: PIHOLE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pihole-password
+              key: password
+        - name: PIHOLE_SERVER
+          value: https://pi-hole.pi.home.notasecret.net
+        - name: PIHOLE_TLS_INSECURE
+          value: "true"
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: http-webhook
+        initialDelaySeconds: 10
+        timeoutSeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /readyz
+          port: http-webhook
+        initialDelaySeconds: 10
+        timeoutSeconds: 5
+  policy: upsert-only
+  sources: ["ingress", "service"] # or whatever you need
+  registry: noop
+  domainFilters: ["pi.home.notasecret.net"]

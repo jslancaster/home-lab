@@ -1,0 +1,30 @@
+home-assistant:
+  replicaCount: 1
+  persistence:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      external-dns.alpha.kubernetes.io/hostname: ha.pi.home.notasecret.net
+    className: "nginx"
+    hosts:
+      - host: ha.pi.home.notasecret.net
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: home-assistant-tls
+        hosts:
+          - ha.pi.home.notasecret.net
+  configuration:
+    enabled: true
+    trusted_proxies:
+      - 10.0.0.0/8
+  initContainers:
+    - name: init-hacs
+      image: bash
+      command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
+      volumeMounts:
+        - mountPath: /config
+          name: home-assistant

@@ -1,0 +1,13 @@
+sealed-secrets:
+  image:
+    tag: 0.29.0
+  namespace: sealed-secrets
+  ingress:
+    enabled: true
+    # ingressClassName: nginx
+    hostname: secrets.pi.home.notasecret.net
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      # external-dns.alpha.kubernetes.io/hostname: secrets.pi.home.notasecret.net
+    tls: true
+

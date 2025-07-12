@@ -1,0 +1,8 @@
+---
+- name: test
+  hosts: all
+  tasks:
+    - name: Configure kube-vip and kube-vip-cloud-controller
+      kubernetes.core.k8s_info:
+        kind: Pod
+      register: pod_list

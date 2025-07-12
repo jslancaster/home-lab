@@ -3,18 +3,22 @@ external-dns:
     name: webhook
     webhook:
       image:
-        repository: ghcr.io/tarantini-io/external-dns-pihole-webhook
-        tag: main
+        repository: ghcr.io/kashalls/external-dns-unifi-webhook
+        tag: v0.6.0
       env:
-        - name: PIHOLE_PASSWORD
+        - name: UNIFI_HOST
+          value: https://192.168.50.1 # replace with the address to your UniFi router/controller
+        - name: UNIFI_EXTERNAL_CONTROLLER
+          value: "false"
+        - name: UNIFI_SITE
+          value: "default"
+        - name: UNIFI_API_KEY
           valueFrom:
             secretKeyRef:
-              name: pihole-password
-              key: password
-        - name: PIHOLE_SERVER
-          value: https://pi-hole.pi.home.notasecret.net
-        - name: PIHOLE_TLS_INSECURE
-          value: "true"
+              name: external-dns-unifi-secret
+              key: api-key
+        - name: LOG_LEVEL
+          value: info
       livenessProbe:
         httpGet:
           path: /healthz
@@ -27,6 +31,8 @@ external-dns:
           port: http-webhook
         initialDelaySeconds: 10
         timeoutSeconds: 5
+  extraArgs:
+  - --ignore-ingress-tls-spec
   policy: upsert-only
   sources: ["ingress", "service"] # or whatever you need
   registry: noop

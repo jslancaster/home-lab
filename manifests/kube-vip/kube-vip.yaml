@@ -86,4 +86,8 @@ spec:
         operator: Exists
       - effect: NoExecute
         operator: Exists
+      - key: "k3s-controlplane"
+        operator: "Equal"
+        value: "true"
+        effect: NoSchedule
   updateStrategy: {}

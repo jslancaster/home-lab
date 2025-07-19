@@ -17,5 +17,6 @@ netbox:
   externalDatabase:
     host: netbox-rw.cnpg-system
     database: app
-    existingSecretName: netbox-app.cnpg-system.secret.cluster.local
+    username: app
+    existingSecretName: netbox-app
     existingSecretKey: password

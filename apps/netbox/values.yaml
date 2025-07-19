@@ -1,2 +1,21 @@
 netbox:
-  
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      external-dns.alpha.kubernetes.io/hostname: netbox.pi.home.notasecret.net
+    hosts: 
+      - host: netbox.pi.home.notasecret.net
+        paths:
+          - /
+    tls:
+      - secretName: netbox-tls
+        hosts: 
+          - netbox.pi.home.notasecret.net
+  postgresql:
+    enabled: false
+  externalDatabase:
+    host: netbox-rw.cnpg-system
+    database: app
+    existingSecretName: netbox-app.cnpg-system.secret.cluster.local
+    existingSecretKey: password

@@ -1,0 +1,10 @@
+apiVersion: v2
+name: netbox
+type: application
+version: 0.1.0
+appVersion: "1.0"
+dependencies:
+  - name: netbox
+    repository: https://charts.netbox.oss.netboxlabs.com/
+    version: 6.0.52
+    alias: netbox

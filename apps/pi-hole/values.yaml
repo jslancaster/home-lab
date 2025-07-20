@@ -1,18 +1,8 @@
 pi-hole:
-  maxUnavailable: 0
+  image:
+    tag: "2025.07.1"
   admin:
     existingSecret: pi-hole-admin-password
-  # ingress:
-  #   enabled: true
-  #   hosts:
-  #     - pi-hole.pi.home.notasecret.net
-  #   tls:
-  #     - secretName: pi-hole-tls
-  #       hosts:
-  #         - pi-hole.pi.home.notasecret.net
-  #   annotations:
-  #     cert-manager.io/cluster-issuer: letsencrypt-prod
-  #     external-dns.alpha.kubernetes.io/hostname: pi-hole.pi.home.notasecret.net
   persistentVolumeClaim:
     enabled: false
   replicaCount: 3
@@ -36,6 +26,11 @@ pi-hole:
     enabled: true
   extraEnvVars:
     FTLCONF_dns_listeningMode: 'all'
-  
-
+  whitelist:
+    - mytv.clients.peacocktv.com
+    - bff-ext.clients.peacocktv.com
+    - imageservice.disco.peacocktv.com
+    - play.ovp.peacocktv.com
+  blacklist:
+    - mt.ssai.peacocktv.com
   

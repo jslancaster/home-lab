@@ -1,3 +1,29 @@
 monitoring:
-  crds:
-    create: false
+  grafana:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        external-dns.alpha.kubernetes.io/hostname: grafana.pi.home.notasecret.net
+      hosts: 
+        - grafana.pi.home.notasecret.net
+      tls:
+        - secretName: grafana-tls
+          hosts: 
+            - grafana.pi.home.notasecret.net
+    persistence:
+      enabled: true
+      size: 20Gi
+  prometheus:
+    prometheusSpec:
+      remoteWriteDashboards: false
+      serverSideApply: true
+      retention: 30d
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi

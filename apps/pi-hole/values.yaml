@@ -1,6 +1,9 @@
 pi-hole:
+  podAnnotations:
+    prometheus.io/port: '9617'
+    prometheus.io/scrape: 'true'
   image:
-    tag: "2025.07.1"
+    tag: "2025.08.0"
   admin:
     existingSecret: pi-hole-admin-password
   persistentVolumeClaim:
@@ -33,4 +36,7 @@ pi-hole:
     - play.ovp.peacocktv.com
   blacklist:
     - mt.ssai.peacocktv.com
+  monitoring:
+    sidecar:
+      enabled: true
   

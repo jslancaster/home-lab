@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  namespace: argocd
+  namespace: argo-cd
   name: infrastructure
   labels:
     app.kubernetes.io/part-of: infrastructure
@@ -14,23 +14,23 @@ spec:
         repoURL: https://github.com/jslancaster/home-lab.git
         revision: main
         directories:
-          - path: gitops/infrastructure/
+          - path: gitops/infrastructure
   template:
     metadata:
       name: 'infra-{{ path.basename }}'
-      namespace: argocd
+      namespace: argo-cd
       labels:
         app.kubernetes.io/component: 'static-infrastructure'
         app.kubernetes.io/part-of: infrastructure
     spec:
       project: infrastructure
       source:
-        repoURL: https://github.com/theepicsaxguy/homelab.git
+        repoURL: https://github.com/jslancaster/home-lab.git
         targetRevision: main
         path: '{{ path }}'
         kustomize: {} # Let Kustomize handle naming
       destination:
-        namespace: infrastructure-system
+        namespace: infrastructure
         server: https://kubernetes.default.svc
       syncPolicy:
         automated:

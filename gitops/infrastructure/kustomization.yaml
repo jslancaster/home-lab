@@ -6,6 +6,7 @@ resources:
 - application-set.yaml
 - external-secrets
 - ingress-nginx
+- cert-manager
 - argocd
 
 generatorOptions:

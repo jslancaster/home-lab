@@ -15,6 +15,8 @@ spec:
         revision: main
         directories:
           - path: gitops/infrastructure/external-secrets
+          - path: gitops/infrastructure/ingress-nginx
+          - path: gitops/infrastructure/argocd
   template:
     metadata:
       name: 'infra-{{ path.basename }}'

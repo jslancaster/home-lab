@@ -14,9 +14,7 @@ spec:
         repoURL: https://github.com/jslancaster/home-lab.git
         revision: main
         directories:
-          - path: gitops/infrastructure/external-secrets
-          - path: gitops/infrastructure/ingress-nginx
-          - path: gitops/infrastructure/argocd
+          - path: gitops/infrastructure/*
   template:
     metadata:
       name: 'infra-{{ path.basename }}'

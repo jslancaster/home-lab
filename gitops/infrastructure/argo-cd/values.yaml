@@ -1,4 +1,15 @@
 argo-cd:
+  configs:
+    cm:
+      create: true
+      kustomize.buildOptions: '--enable-helm'
+    cmp:
+      create: true
+      plugins:
+        kustomize-build-with-helm:
+          generate:
+            command: [sh, -c]
+            args: [kustomize build --enable-helm]
   redis-ha:
     enabled: true
   controller:

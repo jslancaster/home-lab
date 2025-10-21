@@ -14,7 +14,7 @@ spec:
         repoURL: https://github.com/jslancaster/home-lab.git
         revision: main
         directories:
-          - path: gitops/infrastructure
+          - path: gitops/infrastructure/external-secrets
   template:
     metadata:
       name: 'infra-{{ path.basename }}'

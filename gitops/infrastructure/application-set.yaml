@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  namespace: argo-cd
+  namespace: argocd
   name: infrastructure
   labels:
     app.kubernetes.io/part-of: infrastructure
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       name: 'infra-{{ path.basename }}'
-      namespace: argo-cd
+      namespace: argocd
       labels:
         app.kubernetes.io/component: 'static-infrastructure'
         app.kubernetes.io/part-of: infrastructure

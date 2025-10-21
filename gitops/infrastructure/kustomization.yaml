@@ -5,6 +5,8 @@ resources:
 - project.yaml
 - application-set.yaml
 - external-secrets
+- ingress-nginx
+- argocd
 
 generatorOptions:
   disableNameSuffixHash: true

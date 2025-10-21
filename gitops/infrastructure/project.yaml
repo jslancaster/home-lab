@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: infrastructure
-  namespace: argo-cd
+  namespace: argocd
   labels:
     app.kubernetes.io/part-of: infrastructure
     app.kubernetes.io/managed-by: argocd

@@ -9,6 +9,7 @@ resources:
 - ingress-nginx
 - cert-manager
 - argocd
+- kube-vip
 
 generatorOptions:
   disableNameSuffixHash: true

@@ -5,6 +5,7 @@ resources:
 - project.yaml
 - application-set.yaml
 - external-secrets
+- external-dns
 - ingress-nginx
 - cert-manager
 - argocd

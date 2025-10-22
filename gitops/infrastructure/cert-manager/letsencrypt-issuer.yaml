@@ -13,11 +13,11 @@ spec:
         route53:
           region: us-east-1
           accessKeyIDSecretRef:
-            name: prod-route53-credentials-secret
-            key: access-key-id
+            name: cert-manager-svc
+            key: access-key
           secretAccessKeySecretRef:
-            name: prod-route53-credentials-secret
-            key: secret-access-key
+            name: cert-manager-svc
+            key: secret-key
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -34,8 +34,8 @@ spec:
         route53:
           region: us-east-1
           accessKeyIDSecretRef:
-            name: prod-route53-credentials-secret
-            key: access-key-id
+            name: cert-manager-svc
+            key: access-key
           secretAccessKeySecretRef:
-            name: prod-route53-credentials-secret
-            key: secret-access-key
+            name: cert-manager-svc
+            key: secret-key

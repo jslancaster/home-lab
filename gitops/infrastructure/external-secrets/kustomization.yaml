@@ -4,6 +4,7 @@ namespace: external-secrets
 resources:
 - namespace.yaml
 - bitwarden-sdk-server-cert.yaml
+- bitwarden-store.yaml
 
 helmCharts:
   - name: external-secrets

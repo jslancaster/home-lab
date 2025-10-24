@@ -1,4 +1,9 @@
+global:
+  domain: argocd.pi.home.notasecret.net
+
 configs:
+  params:
+    server.insecure: true
   cm:
     create: true
     kustomize.buildOptions: '--enable-helm'
@@ -8,6 +13,15 @@ controller:
   replicas: 1
 server:
   replicas: 2
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    extraTls:
+      - hosts:
+        - argocd.pi.home.notasecret.net
 repoServer:
   replicas: 2
 applicationSet:

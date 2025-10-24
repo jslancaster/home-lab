@@ -1,0 +1,6 @@
+ingress:
+  enabled: true
+  host: longhorn.pi.home.notasecret.net
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod

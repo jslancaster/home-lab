@@ -20,10 +20,10 @@ configuration:
   enabled: true
   trusted_proxies:
     - 10.0.0.0/8
-initContainers:
-  - name: init-hacs
-    image: bash
-    command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
-    volumeMounts:
-      - mountPath: /config
-        name: home-assistant
+# initContainers:
+#   - name: init-hacs
+#     image: bash
+#     command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
+#     volumeMounts:
+#       - mountPath: /config
+#         name: home-assistant

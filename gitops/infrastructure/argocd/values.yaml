@@ -19,6 +19,7 @@ server:
     annotations:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     extraTls:
       - hosts:
         - argocd.pi.home.notasecret.net

@@ -23,6 +23,7 @@ server:
     extraTls:
       - hosts:
         - argocd.pi.home.notasecret.net
+        secretName: argo-server-tls
 repoServer:
   replicas: 2
 applicationSet:

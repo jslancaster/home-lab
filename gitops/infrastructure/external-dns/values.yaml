@@ -35,4 +35,4 @@ extraArgs:
 policy: upsert-only
 sources: ["ingress", "service"] # or whatever you need
 registry: noop
-domainFilters: ["pi.home.notasecret.net"]
+domainFilters: ["pi.home.notasecret.net", "home.notasecret.net"]

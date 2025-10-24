@@ -10,6 +10,7 @@ resources:
 - cert-manager
 - argocd
 - kube-vip
+- longhorn
 
 generatorOptions:
   disableNameSuffixHash: true

@@ -5,10 +5,10 @@ resources:
 - namespace.yaml
 - postgres.yaml
 
-# helmCharts:
-#   - name: mealie
-#     repo: https://jslancaster.github.io/helm-charts
-#     version: 0.1.0
-#     releaseName: mealie
-#     namespace: mealie
-#     valuesFile: values.yaml
+helmCharts:
+  - name: mealie
+    repo: https://jslancaster.github.io/helm-charts
+    version: 0.1.0
+    releaseName: mealie
+    namespace: mealie
+    valuesFile: values.yaml

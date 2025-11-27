@@ -1,10 +1,10 @@
-# config:
-#   database:
-#     engine: postgres
-#     postgres:
-#       existingSecret: cluster-example-app
-#       existingSecretHostKey: host
-#       existingSecretPortKey: port
-#       existingSecretDatabaseKey: dbname
-#       existingSecretUsernameKey: username
-#       existingSecretPasswordKey: password
+config:
+  database:
+    engine: postgres
+    postgres:
+      existingSecret: mealie-app
+      existingSecretHostKey: host
+      existingSecretPortKey: port
+      existingSecretDatabaseKey: dbname
+      existingSecretUsernameKey: username
+      existingSecretPasswordKey: password

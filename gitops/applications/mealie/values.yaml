@@ -8,3 +8,16 @@ config:
       existingSecretDatabaseKey: dbname
       existingSecretUsernameKey: username
       existingSecretPasswordKey: password
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: mealie.home.notasecret.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: mealie-tls
+      hosts:
+        - mealie.home.notasecret.net
